@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>陆德飞 | 数据开发工程师 · ETL 工程师</title>
+<meta name="description" content="陆德飞的个人主页 — 6年大数据开发经验，专注金融行业数据仓库、实时计算与ETL开发">
+<style>
+  :root{
+    --primary:#0b5fff;
+    --primary-dark:#0946c0;
+    --primary-light:#e8f0ff;
+    --ink:#1a2333;
+    --ink-soft:#4a5568;
+    --ink-faint:#8a94a6;
+    --bg:#f7f9fc;
+    --card:#ffffff;
+    --line:#e5eaf2;
+    --green:#0aa06e;
+    --gold:#e8a020;
+    --radius:14px;
+    --shadow:0 6px 24px rgba(16,42,100,.07);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,-apple-system,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.75;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+  /* ============ 顶部导航 ============ */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,.86);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .logo{font-weight:800;font-size:18px;letter-spacing:.5px;display:flex;align-items:center;gap:10px;}
+  .logo .dot{width:10px;height:10px;border-radius:3px;background:linear-gradient(135deg,var(--primary),#33c1ff);box-shadow:0 0 0 4px var(--primary-light);}
+  nav .links{display:flex;gap:26px;font-size:14.5px;color:var(--ink-soft);}
+  nav .links a{transition:color .2s;position:relative;padding:4px 0;}
+  nav .links a:hover{color:var(--primary);}
+  nav .links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--primary);transition:width .25s;border-radius:2px;}
+  nav .links a:hover::after{width:100%;}
+
+  /* ============ Hero ============ */
+  .hero{
+    background:
+      radial-gradient(900px 420px at 85% -10%,rgba(11,95,255,.12),transparent 60%),
+      radial-gradient(700px 380px at -5% 110%,rgba(10,160,110,.10),transparent 60%),
+      linear-gradient(180deg,#fbfdff 0%,var(--bg) 100%);
+    padding:88px 0 72px;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.35fr .85fr;gap:48px;align-items:center;}
+  .kicker{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--primary-light);color:var(--primary-dark);
+    font-size:13px;font-weight:600;padding:6px 14px;border-radius:999px;margin-bottom:22px;
+  }
+  .kicker::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--primary);animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(11,95,255,.35);}50%{box-shadow:0 0 0 6px rgba(11,95,255,0);}}
+  h1{font-size:52px;font-weight:800;letter-spacing:2px;line-height:1.2;}
+  h1 .accent{color:var(--primary);}
+  .hero-title-role{margin-top:12px;font-size:20px;color:var(--ink-soft);font-weight:500;}
+  .hero-bio{margin-top:20px;font-size:15.5px;color:var(--ink-soft);max-width:560px;}
+  .hero-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;}
+  .hero-tags span{
+    font-size:13px;color:var(--ink-soft);background:#fff;border:1px solid var(--line);
+    padding:5px 13px;border-radius:999px;box-shadow:var(--shadow);
+  }
+  .hero-actions{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;
+    padding:12px 26px;border-radius:10px;transition:all .22s;cursor:pointer;
+  }
+  .btn-primary{background:var(--primary);color:#fff;box-shadow:0 8px 20px rgba(11,95,255,.28);}
+  .btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);}
+  .btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--line);}
+  .btn-ghost:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-2px);}
+
+  /* 名片卡片 */
+  .profile-card{
+    background:var(--card);border-radius:20px;padding:34px 32px;
+    box-shadow:0 20px 50px rgba(16,42,100,.10);border:1px solid var(--line);
+    position:relative;overflow:hidden;
+  }
+  .profile-card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--primary),#33c1ff,var(--green));}
+  .avatar{
+    width:84px;height:84px;border-radius:22px;
+    background:linear-gradient(135deg,var(--primary),#33c1ff);
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-size:34px;font-weight:800;letter-spacing:2px;margin-bottom:18px;
+    box-shadow:0 10px 24px rgba(11,95,255,.3);
+  }
+  .pc-name{font-size:22px;font-weight:800;}
+  .pc-role{font-size:13.5px;color:var(--ink-faint);margin-top:2px;}
+  .pc-rows{margin-top:22px;display:grid;gap:13px;}
+  .pc-row{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--ink-soft);}
+  .pc-row .ic{
+    width:34px;height:34px;border-radius:9px;background:var(--primary-light);
+    display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;
+  }
+  .pc-row b{color:var(--ink);font-weight:600;}
+
+  /* 统计条 */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:64px;}
+  .stat{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 20px;text-align:center;box-shadow:var(--shadow);transition:transform .25s;
+  }
+  .stat:hover{transform:translateY(-4px);}
+  .stat .num{font-size:30px;font-weight:800;color:var(--primary);}
+  .stat .num small{font-size:15px;font-weight:600;}
+  .stat .lab{font-size:13px;color:var(--ink-faint);margin-top:4px;}
+
+  /* ============ 通用 Section ============ */
+  section{padding:78px 0;}
+  .sec-head{margin-bottom:42px;}
+  .sec-head .eyebrow{font-size:13px;font-weight:700;color:var(--primary);letter-spacing:3px;text-transform:uppercase;}
+  .sec-head h2{font-size:32px;font-weight:800;margin-top:6px;}
+  .sec-head p{color:var(--ink-faint);font-size:14.5px;margin-top:6px;}
+
+  /* ============ 技能 ============ */
+  .skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .skill-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 24px;box-shadow:var(--shadow);transition:all .25s;
+  }
+  .skill-card:hover{transform:translateY(-4px);border-color:rgba(11,95,255,.35);}
+  .skill-card .sicon{
+    width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    font-size:21px;margin-bottom:16px;
+  }
+  .sc1{background:#e8f0ff;} .sc2{background:#e6f8f1;} .sc3{background:#fff5e4;}
+  .sc4{background:#f0eaff;} .sc5{background:#ffeef0;} .sc6{background:#e6f4fb;}
+  .skill-card h3{font-size:17px;font-weight:700;margin-bottom:10px;}
+  .skill-card p{font-size:13.5px;color:var(--ink-soft);}
+  .skill-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;}
+  .skill-chips i{
+    font-style:normal;font-size:12px;color:var(--ink-soft);
+    background:var(--bg);border:1px solid var(--line);padding:2px 10px;border-radius:6px;
+  }
+
+  /* ============ 工作经历 & 教育 ============ */
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .exp-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px;box-shadow:var(--shadow);
+  }
+  .exp-card .co-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+  .exp-card h3{font-size:17.5px;font-weight:700;}
+  .exp-card .date{font-size:13px;color:var(--primary);background:var(--primary-light);padding:3px 12px;border-radius:999px;white-space:nowrap;font-weight:600;}
+  .exp-card .role{font-size:14px;color:var(--ink-soft);margin-top:4px;font-weight:500;}
+  .exp-card ul{margin-top:14px;list-style:none;display:grid;gap:8px;}
+  .exp-card li{font-size:13.5px;color:var(--ink-soft);padding-left:16px;position:relative;}
+  .exp-card li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--primary);}
+  .edu-card{
+    background:linear-gradient(135deg,#0b5fff,#3f7bff);color:#fff;border-radius:var(--radius);
+    padding:26px;box-shadow:0 16px 40px rgba(11,95,255,.28);
+  }
+  .edu-card h3{font-size:17.5px;font-weight:700;}
+  .edu-card .role{font-size:14px;opacity:.9;margin-top:4px;}
+  .edu-card .date{background:rgba(255,255,255,.2);padding:3px 12px;border-radius:999px;font-size:13px;font-weight:600;white-space:nowrap;}
+  .edu-card li{color:rgba(255,255,255,.92);}
+  .edu-card li::before{background:#ffd25e;}
+
+  /* ============ 项目时间线 ============ */
+  #projects{background:linear-gradient(180deg,var(--bg) 0%,#f2f6fc 50%,var(--bg) 100%);}
+  .timeline{position:relative;padding-left:34px;}
+  .timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--primary),#33c1ff,var(--green));border-radius:2px;}
+  .t-item{position:relative;margin-bottom:30px;}
+  .t-item::before{
+    content:"";position:absolute;left:-33px;top:26px;width:16px;height:16px;border-radius:50%;
+    background:#fff;border:4px solid var(--primary);box-shadow:0 0 0 4px rgba(11,95,255,.15);
+  }
+  .t-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);overflow:hidden;transition:all .25s;
+  }
+  .t-card:hover{transform:translateX(4px);border-color:rgba(11,95,255,.35);}
+  .t-head{padding:22px 26px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;}
+  .t-head h3{font-size:18px;font-weight:700;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .t-date{font-size:13px;color:var(--primary);background:var(--primary-light);padding:3px 12px;border-radius:999px;font-weight:600;white-space:nowrap;}
+  .t-tag{font-size:11.5px;font-weight:700;color:var(--green);background:#e6f8f1;padding:2px 10px;border-radius:6px;letter-spacing:.5px;}
+  .t-body{padding:14px 26px 24px;}
+  .t-desc{font-size:14px;color:var(--ink-soft);}
+  .t-stack{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;}
+  .t-stack span{
+    font-size:12px;color:var(--primary-dark);background:var(--primary-light);
+    padding:3px 11px;border-radius:6px;font-weight:600;
+  }
+  .t-points{margin-top:14px;display:grid;gap:8px;}
+  .t-points li{list-style:none;font-size:13.5px;color:var(--ink-soft);padding-left:16px;position:relative;}
+  .t-points li::before{content:"▸";position:absolute;left:0;color:var(--primary);}
+  .t-points li b{color:var(--ink);font-weight:600;}
+  .t-metrics{margin-top:16px;display:flex;flex-wrap:wrap;gap:10px;}
+  .t-metrics span{
+    font-size:12.5px;font-weight:700;color:var(--green);
+    background:#e6f8f1;border:1px solid #bfe9d8;padding:5px 13px;border-radius:8px;
+  }
+
+  /* ============ 自我评价 ============ */
+  .eval-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+  .eval-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px;box-shadow:var(--shadow);display:flex;gap:16px;
+  }
+  .eval-card .eic{
+    width:44px;height:44px;border-radius:12px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;font-size:20px;background:var(--primary-light);
+  }
+  .eval-card h3{font-size:15.5px;font-weight:700;margin-bottom:8px;}
+  .eval-card p{font-size:13.5px;color:var(--ink-soft);}
+
+  /* ============ 页脚 ============ */
+  footer{
+    background:#0d1a35;color:rgba(255,255,255,.75);
+    padding:44px 0;text-align:center;font-size:13.5px;
+  }
+  footer .f-links{display:flex;justify-content:center;gap:26px;margin-bottom:16px;flex-wrap:wrap;}
+  footer a:hover{color:#fff;}
+  footer .copyright{color:rgba(255,255,255,.4);font-size:12.5px;}
+
+  /* 返回顶部 */
+  #backtop{
+    position:fixed;right:26px;bottom:26px;width:44px;height:44px;border-radius:12px;
+    background:var(--primary);color:#fff;border:none;font-size:18px;cursor:pointer;
+    box-shadow:0 10px 24px rgba(11,95,255,.35);opacity:0;pointer-events:none;transition:all .3s;z-index:99;
+  }
+  #backtop.show{opacity:1;pointer-events:auto;}
+  #backtop:hover{background:var(--primary-dark);transform:translateY(-3px);}
+
+  /* 入场动画 */
+  .reveal{opacity:0;transform:translateY(26px);transition:all .7s cubic-bezier(.2,.7,.3,1);}
+  .reveal.on{opacity:1;transform:none;}
+
+  /* ============ 响应式 ============ */
+  @media (max-width:920px){
+    .hero-grid{grid-template-columns:1fr;}
+    h1{font-size:38px;}
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .skill-grid{grid-template-columns:1fr 1fr;}
+    .twocol,.eval-grid{grid-template-columns:1fr;}
+    nav .links{display:none;}
+  }
+  @media (max-width:560px){
+    .skill-grid{grid-template-columns:1fr;}
+    .stats{grid-template-columns:1fr 1fr;gap:12px;}
+    section{padding:56px 0;}
+    h1{font-size:32px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="logo"><span class="dot"></span>陆德飞<span style="font-size:12px;color:var(--ink-faint);font-weight:500;">· Data Engineer</span></div>
+      <div class="links">
+        <a href="#about">首页</a>
+        <a href="#skills">专业技能</a>
+        <a href="#experience">工作经历</a>
+        <a href="#projects">项目经历</a>
+        <a href="#evaluation">自我评价</a>
+        <a href="#contact">联系我</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ Hero ============ -->
+<div class="hero" id="about">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="kicker">正在求职 · 数据开发工程师 | ETL 工程师</span>
+        <h1>陆德飞<span class="accent">.</span></h1>
+        <div class="hero-title-role">数据开发工程师 · ETL 工程师 · 6 年大数据实战</div>
+        <p class="hero-bio">
+          专注金融行业数据建设，先后服务长江证券及多家农商行，深耕<strong>离线数仓、实时计算、监管报送、反欺诈风控、客户画像</strong>等核心场景。
+          熟悉 ODS→DWD→DWS→ADS 全链路开发，具备从需求梳理、数据建模、ETL 开发到数据治理的完整项目实战能力。
+        </p>
+        <div class="hero-tags">
+          <span>⚙ Flink SQL 实时计算</span>
+          <span>🗄 Hive / Spark 数仓</span>
+          <span>⚡ Doris / StarRocks OLAP</span>
+          <span>🔄 DataX / Kettle / Sqoop</span>
+          <span>📊 FineBI / FineReport</span>
+          <span>🐍 Python / FastAPI</span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">查看项目经历 ↓</a>
+          <a class="btn btn-ghost" href="#contact">联系我</a>
+        </div>
+      </div>
+
+      <aside class="profile-card reveal">
+        <div class="avatar">陆</div>
+        <div class="pc-name">陆德飞</div>
+        <div class="pc-role">男 · 28 岁 · 中共党员</div>
+        <div class="pc-rows">
+          <div class="pc-row"><span class="ic">💼</span><span><b>6 年</b> 大数据开发经验</span></div>
+          <div class="pc-row"><span class="ic">🎓</span><span>楚雄师范学院 · 全日制本科<br>电气工程及其自动化</span></div>
+          <div class="pc-row"><span class="ic">📱</span><span>15108832270</span></div>
+          <div class="pc-row"><span class="ic">✉️</span><span>709162753@qq.com</span></div>
+          <div class="pc-row"><span class="ic">💬</span><span>QQ：709162753</span></div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="stats">
+      <div class="stat reveal"><div class="num">6<small> 年</small></div><div class="lab">大数据开发经验</div></div>
+      <div class="stat reveal"><div class="num">7<small> 个</small></div><div class="lab">金融行业核心项目</div></div>
+      <div class="stat reveal"><div class="num">500<small>+</small></div><div class="lab">客户画像标签设计</div></div>
+      <div class="stat reveal"><div class="num">2<small> 亿</small></div><div class="lab">核心数据迁移 · 零丢失</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 专业技能 ============ -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Skills</div>
+      <h2>专业技能</h2>
+      <p>从数据库内核到大数据生态，从离线批处理到秒级实时计算</p>
+    </div>
+    <div class="skill-grid">
+      <div class="skill-card reveal">
+        <div class="sicon sc1">🗄️</div>
+        <h3>数据库技术</h3>
+        <p>熟悉 Oracle、MySQL、GaussDB 关系型数据库及 Doris 分析型数据库；熟练掌握 SQL 高级语法（开窗函数、行列转换、复杂多表关联）及存储过程开发，具备索引优化、执行计划分析、分区裁剪等性能调优实战能力。</p>
+        <div class="skill-chips"><i>Oracle</i><i>MySQL</i><i>GaussDB</i><i>Doris</i><i>SQL 调优</i></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="sicon sc2">⚡</div>
+        <h3>大数据开发</h3>
+        <p>熟悉 Hadoop 生态（HDFS、MapReduce、YARN 核心原理）；熟练编写 Hive SQL / Spark SQL 处理海量数据，具备数据倾斜处理、小文件合并、谓词下推等调优经验；了解 Flink SQL 流处理（OVER 窗口、Lookup JOIN、Watermark）及 Kafka 消息队列。</p>
+        <div class="skill-chips"><i>Hadoop</i><i>Hive</i><i>Spark SQL</i><i>Flink SQL</i><i>Kafka</i></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="sicon sc3">🧩</div>
+        <h3>数据仓库与建模</h3>
+        <p>熟悉数仓分层架构（ODS→DWD→DWS→ADS），掌握星型模型维度建模方法，理解事实表与维度表设计原则；能独立完成 Mapping 映射文档编写及全链路数据血缘梳理；熟练使用 PowerDesigner 进行 CDM/PDM 模型设计。</p>
+        <div class="skill-chips"><i>维度建模</i><i>数仓分层</i><i>数据血缘</i><i>PowerDesigner</i></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="sicon sc4">🔄</div>
+        <h3>ETL 与数据集成</h3>
+        <p>熟练使用 DataX、Kettle、Sqoop 完成异构数据全量/增量采集与同步；熟练使用 DolphinScheduler（海豚调度）、Airflow、Azkaban 进行工作流编排与任务监控。</p>
+        <div class="skill-chips"><i>DataX</i><i>Kettle</i><i>Sqoop</i><i>DolphinScheduler</i><i>Airflow</i><i>Azkaban</i></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="sicon sc5">🖥️</div>
+        <h3>脚本与运维</h3>
+        <p>熟练使用 Python（Pandas 数据清洗与聚合分析、NumPy 数值计算、FastAPI 数据服务接口开发）；熟练掌握 Linux 常用命令，能编写 Shell 脚本实现数据批量处理、日志分析、定时调度；熟练使用 Git 进行版本管理。</p>
+        <div class="skill-chips"><i>Python</i><i>Pandas</i><i>FastAPI</i><i>Shell</i><i>Linux</i><i>Git</i></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="sicon sc6">📊</div>
+        <h3>报表可视化</h3>
+        <p>熟练使用 FineBI 进行自助分析和交互式看板开发，熟练使用 FineReport 进行固定报表开发，能根据业务需求设计多维分析看板及周期性自动推送报表。</p>
+        <div class="skill-chips"><i>FineBI</i><i>FineReport</i><i>看板设计</i><i>自动推送</i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 工作经历 & 教育背景 ============ -->
+<section id="experience" style="padding-top:0;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Experience</div>
+      <h2>工作经历 & 教育背景</h2>
+      <p>从初级数据开发到独立负责核心模块的稳步成长</p>
+    </div>
+    <div class="twocol">
+      <div style="display:grid;gap:24px;">
+        <div class="exp-card reveal">
+          <div class="co-row">
+            <div>
+              <h3>安徽耘联大数据有限公司</h3>
+              <div class="role">数据开发工程师</div>
+            </div>
+            <span class="date">2022.05 – 2026.06</span>
+          </div>
+          <ul>
+            <li>主导农商行数据平台建设：监管报送、客户画像、实时反欺诈风控等核心项目</li>
+            <li>深耕湖仓一体架构与实时计算，完成 2 亿条核心数据国产化迁移（零丢失）</li>
+          </ul>
+        </div>
+        <div class="exp-card reveal">
+          <div class="co-row">
+            <div>
+              <h3>达昌智慧（武汉）信息技术有限公司</h3>
+              <div class="role">数据开发工程师</div>
+            </div>
+            <span class="date">2020.08 – 2022.03</span>
+          </div>
+          <ul>
+            <li>参与证券经纪业务数据平台、零售数字化营销分析系统建设</li>
+            <li>完成离线数仓分层 ETL 开发、RFM 用户分层模型与 BI 看板交付</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-card edu-card reveal" style="align-self:start;">
+        <div class="co-row">
+          <div>
+            <h3>🎓 楚雄师范学院</h3>
+            <div class="role">电气工程及其自动化 · 全日制本科</div>
+          </div>
+          <span class="date">2016.09 – 2020.07</span>
+        </div>
+        <ul>
+          <li>工科背景，逻辑思维扎实，为数据库与大数据方向打下坚实基础</li>
+          <li>在校期间系统学习编程、电路与自动化控制相关课程</li>
+        </ul>
+        <div style="margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.25);">
+          <div style="font-size:13px;opacity:.85;letter-spacing:1px;">求职意向</div>
+          <div style="font-size:19px;font-weight:800;margin-top:4px;">数据开发工程师 | ETL 工程师</div>
+          <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;">
+            <span style="font-size:12.5px;background:rgba(255,255,255,.16);padding:3px 12px;border-radius:999px;">6 年经验</span>
+            <span style="font-size:12.5px;background:rgba(255,255,255,.16);padding:3px 12px;border-radius:999px;">金融数据领域</span>
+            <span style="font-size:12.5px;background:rgba(255,255,255,.16);padding:3px 12px;border-radius:999px;">中共党员</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 项目经历 ============ -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Projects</div>
+      <h2>项目经历</h2>
+      <p>7 个金融行业核心项目 · 覆盖证券与银行全业务场景</p>
+    </div>
+    <div class="timeline">
+
+      <div class="t-item reveal">
+        <div class="t-card">
+          <div class="t-head">
+            <h3>荆州农商行反欺诈实时风控数据平台 <span class="t-tag">实时计算</span></h3>
+            <span class="t-date">2025.08 – 2026.06</span>
+          </div>
+          <div class="t-body">
+            <p class="t-desc">构建毫秒级~秒级实时反欺诈风控系统，对银行多业务系统数据流实时采集、融合分析与规则引擎决策，交易发生瞬间完成欺诈判定并触发拦截，解决传统 T+1 离线风控的滞后性问题。</p>
+            <div class="t-stack"><span>Flink SQL</span><span>Kafka</span><span>Apache Doris</span><span>Debezium CDC</span><span>Hive</span><span>DolphinScheduler</span><span>DataX</span><span>PowerDesigner</span></div>
+            <ul class="t-points">
+              <li>对接风控业务，梳理 <b>6 条核心风控规则</b>（黑名单/高频交易/多收款方/设备切换/大额异常/代理IP）的业务口径与评分权重</li>
+              <li>使用 <b>OVER 窗口（RANGE BETWEEN INTERVAL）</b>开发近 1/5/60 分钟交易次数、金额、收款方、设备、IP 等实时特征计算，Lookup JOIN 完成交易事件打宽</li>
+              <li>编写 CASE WHEN 规则引擎，实现 6 规则加权评分与<b>四级决策</b>，结果通过 Unique Key 模型幂等写入 Doris（Stream Load 攒批）</li>
+              <li>使用 <b>MATCH_RECOGNIZE</b> 实现"小额失败→连续失败→大额成功"盗卡路径 CEP 检测</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-item reveal">
+        <div class="t-card">
+          <div class="t-head">
+            <h3>盐城农商行一表通监管报送平台 <span class="t-tag">监管报送</span></h3>
+            <span class="t-date">2024.10 – 2025.07</span>
+          </div>
+          <div class="t-body">
+            <p class="t-desc">整合 1104、EAST、客户风险 3 套监管体系，覆盖 10 大主题域、90 张数据表、2224 个标准字段，建设报送区+可信区双区架构，实现 T+1 高频报送与穿透式监管。</p>
+            <div class="t-stack"><span>Hadoop</span><span>Hive</span><span>DataX</span><span>DolphinScheduler</span><span>TiDB</span><span>Git</span></div>
+            <ul class="t-points">
+              <li>负责<b>协议主题域</b>数据建模，编写 Mapping 映射文档（20+ 张表、300+ 字段），逐一核对字段映射与码值转换规则</li>
+              <li>完成 ODS→DWD→ADS 分层 ETL 开发，海豚调度每日 T+1 自动化执行</li>
+              <li>开发规范性/完整性/准确性预校验规则 <b>500+ 条</b>，主题域数据合格率 <b>74% → 99%</b></li>
+              <li>编写数据血缘文档，实现四级穿透追溯，<b>问题排查时间 1 天 → 3 小时</b></li>
+            </ul>
+            <div class="t-metrics"><span>✓ 合格率 74%→99%</span><span>✓ 排查效率提升 8 倍</span><span>✓ 校验规则 500+</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-item reveal">
+        <div class="t-card">
+          <div class="t-head">
+            <h3>芜湖农商行企业级客户画像系统 <span class="t-tag">客户画像</span></h3>
+            <span class="t-date">2024.01 – 2024.09</span>
+          </div>
+          <div class="t-body">
+            <p class="t-desc">打通核心系统、信用卡、理财、网银等 10+ 数据源，构建统一 360° 客户视图：离线层批量计算 T+1 统计标签，实时层实现秒级行为特征，标签结果经 FastAPI 接口供下游营销系统调用。</p>
+            <div class="t-stack"><span>Hadoop</span><span>Hive</span><span>StarRocks</span><span>Flink</span><span>Kafka</span><span>PySpark</span><span>FastAPI</span><span>FineBI</span></div>
+            <ul class="t-points">
+              <li>主导零售标签体系设计：<b>10 大主题 · 52 个二级维度 · 500+ 标签</b>，零售客户 100% 覆盖</li>
+              <li>使用 Hive/PySpark 完成 30+ 张标签结果表的离线批量 ETL 开发</li>
+              <li>参与 Flink SQL 实时标签开发（"大额转账完成"），标签时效 <b>T+1 → 秒级</b></li>
+              <li>FastAPI 开发标签查询接口，支撑业务自助圈选客群</li>
+            </ul>
+            <div class="t-metrics"><span>✓ 标签应用率 92%</span><span>✓ 圈选用时 2周 → 1小时</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-item reveal">
+        <div class="t-card">
+          <div class="t-head">
+            <h3>安庆农商行核心系统数据迁移项目 <span class="t-tag">信创迁移</span></h3>
+            <span class="t-date">2023.03 – 2023.12</span>
+          </div>
+          <div class="t-body">
+            <p class="t-desc">响应信创国产化要求，将核心业务系统从 Oracle 迁移至 GaussDB 分布式数据库，涉及 6 个子系统、80+ 张核心表、全量数据约 2 亿条，要求零丢失、停机窗口不超过 4 小时。</p>
+            <div class="t-stack"><span>Oracle</span><span>GaussDB</span><span>UGO</span><span>DRS</span><span>Shell</span><span>Linux</span><span>DolphinScheduler</span></div>
+            <ul class="t-points">
+              <li>按"全量迁移 → 增量同步 → 数据校验"三阶段策略，独立完成存款、贷款子系统迁移，<b>2 亿条数据零丢失</b></li>
+              <li>编写自动化校验脚本（行数/主键/金额汇总/字段 MD5 四维度），数据一致率 <b>99.99%</b>，差异自动生成报告</li>
+              <li>整理 Oracle→GaussDB 兼容性处理文档（日期格式/字符串长度/SYSDATE/ROWNUM/DECODE 转换规则），供团队复用</li>
+            </ul>
+            <div class="t-metrics"><span>✓ 2 亿条零丢失</span><span>✓ 一致率 99.99%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-item reveal">
+        <div class="t-card">
+          <div class="t-head">
+            <h3>黄石农商行数据互联互通与重构项目 <span class="t-tag">数据治理</span></h3>
+            <span class="t-date">2022.05 – 2023.02</span>
+          </div>
+          <div class="t-body">
+            <p class="t-desc">通过 MDM 主数据管理建立统一客户视图、数据清洗标准化提升数据质量、湖仓一体架构升级（HDFS 数据湖 + GBase 8a MPP 数仓）提升处理性能，实现全行级数据重构。</p>
+            <div class="t-stack"><span>Hadoop HDFS</span><span>Hive</span><span>GBase 8a MPP</span><span>Kettle</span><span>DolphinScheduler</span></div>
+            <ul class="t-points">
+              <li>参与全行数据资产盘点，梳理 10+ 业务系统表结构，发现 <b>327 个重复字段</b>和 18 类格式混乱问题，参与制定 120 个主数据字段统一标准</li>
+              <li>独立负责客户主题域数据清洗：Kettle 处理 20+ 张源表约 <b>2000 万条</b>客户记录（空值/异常值/格式统一），输出数据质量报告</li>
+              <li>参与 MDM 客户主数据管理，多系统重复记录<b>去重率 15%</b>，数据准确率 <b>72% → 98%</b></li>
+              <li>实施敏感字段动态脱敏（身份证/手机号）与操作审计日志，满足《个人信息保护法》合规要求</li>
+            </ul>
+            <div class="t-metrics"><span>✓ 准确率 72%→98%</span><span>✓ 查询 2小时→30分钟</span><span>✓ 存储成本 -60%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-item reveal">
+        <div class="t-card">
+          <div class="t-head">
+            <h3>长江证券经纪业务数据平台 <span class="t-tag">证券数据</span></h3>
+            <span class="t-date">2021.07 – 2022.03</span>
+          </div>
+          <div class="t-body">
+            <p class="t-desc">整合柜台交易、客户管理、理财产品等多源数据，构建客户资产、交易行为、理财产品销售等主题数据集市，以 FineReport 标准化经营日报和分析看板替代人工 Excel 统计。</p>
+            <div class="t-stack"><span>Oracle</span><span>Hive</span><span>DataX</span><span>Azkaban</span><span>FineReport</span><span>Shell</span></div>
+            <ul class="t-points">
+              <li>独立完成 ODS→DWD→ADS 分层 ETL 开发，交付 <b>12 张汇总表 + 5 张宽表</b></li>
+              <li>FineReport 开发营业部经营日报与客户分析看板，Azkaban 定时调度每日自动推送</li>
+              <li>编写 Shell 脚本实现数据归档、日志清理等运维自动化</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-item reveal">
+        <div class="t-card">
+          <div class="t-head">
+            <h3>良品铺子数字化营销数据分析系统 <span class="t-tag">零售营销</span></h3>
+            <span class="t-date">2020.08 – 2021.06</span>
+          </div>
+          <div class="t-body">
+            <p class="t-desc">打通订单、用户行为、广告投放、商品、会员、物流 6 个核心数据源，构建 Hive 离线数仓，通过 RFM 用户分层模型实现客户价值分析，通过全链路营销漏斗实现投放效果追踪。</p>
+            <div class="t-stack"><span>Hadoop</span><span>Hive</span><span>DataX</span><span>Azkaban</span><span>MySQL</span><span>FineBI</span></div>
+            <ul class="t-points">
+              <li>完成 15 张 Hive 表三层 ETL 开发、30+ 个 DataX 采集任务与 Azkaban 调度</li>
+              <li>实现 <b>RFM 用户分层模型</b>（8 群体划分），输出高价值/待激活/流失风险标签，<b>复购率提升 18%</b></li>
+              <li>FineBI 开发全链路营销漏斗看板（曝光→复购 6 环节），分析报告产出 <b>5 天 → 1 天</b></li>
+              <li>运用分区裁剪、MapJoin、EXISTS 替代 IN 等优化，核心作业执行时间 <b>4h → 1.5h（-62.5%）</b></li>
+            </ul>
+            <div class="t-metrics"><span>✓ 复购率 +18%</span><span>✓ 作业耗时 -62.5%</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ 自我评价 ============ -->
+<section id="evaluation" style="padding-top:0;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">About Me</div>
+      <h2>自我评价</h2>
+    </div>
+    <div class="eval-grid">
+      <div class="eval-card reveal">
+        <div class="eic">🚀</div>
+        <div>
+          <h3>扎实的技术成长路径</h3>
+          <p>5 年多大数据开发经验，从初级数据开发起步成长为能独立负责模块的工程师，扎实的 Hadoop/Hive/Spark SQL 离线数仓能力 + Flink/Kafka 实时计算经验，每一阶段提升都有完整项目实战支撑。</p>
+        </div>
+      </div>
+      <div class="eval-card reveal">
+        <div class="eic">🏦</div>
+        <div>
+          <h3>金融数据领域经验丰富</h3>
+          <p>先后参与长江证券及黄石、安庆、芜湖、盐城、荆州等多家农商行数据项目，对证券经纪业务及银行存款/贷款、监管报送、反欺诈风控、客户画像等核心金融业务逻辑有较深理解。</p>
+        </div>
+      </div>
+      <div class="eval-card reveal">
+        <div class="eic">🧱</div>
+        <div>
+          <h3>数仓建设基本功扎实</h3>
+          <p>熟悉 ODS→DWD→DWS→ADS 全链路开发流程，能独立完成 Mapping 文档编写、ETL 开发与数据校验；参与过 MDM 主数据管理、数据质量校验体系建设和数据脱敏合规等治理实践。</p>
+        </div>
+      </div>
+      <div class="eval-card reveal">
+        <div class="eic">🤝</div>
+        <div>
+          <h3>认真负责 · 协作顺畅</h3>
+          <p>工作认真负责，具备良好的团队协作与沟通能力，能清晰理解业务需求并按时高质量交付；学习能力强，面对新技术、新工具能快速上手并应用到实际工作中。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 页脚 / 联系 ============ -->
+<footer id="contact">
+  <div class="wrap">
+    <div style="font-size:26px;font-weight:800;color:#fff;margin-bottom:10px;">期待与您的合作</div>
+    <p style="margin-bottom:22px;">如果我的经验与您的岗位匹配，欢迎随时联系我</p>
+    <div class="f-links">
+      <a href="tel:15108832270">📱 15108832270</a>
+      <a href="mailto:709162753@qq.com">✉️ 709162753@qq.com</a>
+      <a href="tencent://message/?uin=709162753">💬 QQ：709162753</a>
+    </div>
+    <div class="copyright">© 2026 陆德飞 · 数据开发工程师 | ETL 工程师 · 个人主页</div>
+  </div>
+</footer>
+
+<button id="backtop" title="返回顶部">↑</button>
+
+<script>
+  // 滚动入场动画
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // 返回顶部
+  const bt = document.getElementById('backtop');
+  window.addEventListener('scroll',()=>{ bt.classList.toggle('show',window.scrollY>500); });
+  bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+</script>
+</body>
+</html>
